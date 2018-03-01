@@ -47,3 +47,34 @@ for (var j = 0; j < bookSplit.length; j++) {
 console.log(realNumz.join(""));
 
 //Challenge 3
+var scores = [82, 71, 95, 55, 98, 69, 72, 78, 84, 64, 58, 57];
+var gradeArray = [0, 0, 0, 0, 0];  //Stores counts of each grade
+var gradeLegend = ["A", "B", "C", "D", "F"];  //Legend for letter grades of gradeArray
+
+for (var i = 0; i < scores.length; i++) {
+  if(scores[i] > 90) {
+    gradeArray[0]++;
+  } else if (scores[i] > 80) {
+    gradeArray[1]++;
+  } else if (scores[i] > 70) {
+    gradeArray[2]++;
+  } else if (scores[i] > 60) {
+    gradeArray[3]++;
+  } else {
+    gradeArray[4]++;
+  } //end if else for scores count
+}
+//Output results to DOM
+var idGradeCount = document.getElementById("grade-count");
+var idLowestCount = document.getElementById("lowest-grade");
+var idHighestCount = document.getElementById("highest-grade");
+// iterates through letter grades, outputs to DOM
+for (var j = 0; j < gradeArray.length; j++) {
+  idGradeCount.innerHTML += "<h3>" + "Number of " + gradeLegend[j] +  " grades: " + gradeArray[j] + "</h3>";
+}
+//Sort scores and output high/low values to DOM
+scores.sort();
+var lowestGrade = scores[0];
+var highestGrade = scores[scores.length - 1];
+idLowestCount.innerHTML = "<h4>" + "Lowest Grade was: " + lowestGrade + "</h4>";
+idHighestCount.innerHTML = "<h4>" + "Highest Grade was: " + highestGrade + "</h4>";
